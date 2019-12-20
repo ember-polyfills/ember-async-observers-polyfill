@@ -1,7 +1,7 @@
 ember-async-observer-polyfill
 ==============================================================================
 
-[Short description of the addon.]
+Implement's [emberjs/rfcs#494](https://github.com/emberjs/rfcs/blob/master/text/0494-async-observers.md) for older Ember versions.
 
 
 Compatibility
