@@ -9,11 +9,13 @@ module.exports = {
     }
   },
   plugins: [
-    'ember'
+    'ember',
+    'prettier',
   ],
   extends: [
     'eslint:recommended',
-    'plugin:ember/recommended'
+    'plugin:ember/recommended',
+    'plugin:prettier/recommended',
   ],
   env: {
     browser: true
