@@ -1,6 +1,6 @@
 {
   "name": "ember-async-observer-polyfill",
-  "version": "0.0.0",
+  "version": "0.5.0",
   "description": "Implement async observer support (emberjs/rfcs#494) for older Ember versions.",
   "keywords": [
     "ember-addon",
