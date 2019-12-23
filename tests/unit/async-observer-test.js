@@ -17,7 +17,7 @@ module('ember-async-observer-polyfill', function() {
           return `${this.firstName} ${this.lastName}`;
         }),
 
-        fullNameChanged: buildObserver()
+        fullNameChanged: buildObserver(),
       });
 
       return Person.create(options);
@@ -45,7 +45,7 @@ module('ember-async-observer-polyfill', function() {
           dependentKeys: ['fullName'],
           fn() {
             QUnit.config.current.assert.step(`fired for: ${this.fullName}`);
-          }
+          },
         });
       }, /observer called without sync/);
     });
@@ -57,7 +57,7 @@ module('ember-async-observer-polyfill', function() {
           dependentKeys: ['fullName'],
           fn() {
             QUnit.config.current.assert.step(`fired for: ${this.fullName}`);
-          }
+          },
         });
 
       let person = buildPerson({ firstName: 'max', lastName: 'jackson' });
@@ -77,7 +77,7 @@ module('ember-async-observer-polyfill', function() {
           dependentKeys: ['fullName'],
           fn() {
             assert.step(`fired for: ${this.fullName}`);
-          }
+          },
         });
 
       let person = buildPerson({ firstName: 'max', lastName: 'jackson' });
