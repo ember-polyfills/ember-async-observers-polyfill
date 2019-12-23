@@ -75,7 +75,8 @@ module('ember-async-observer-polyfill', function() {
         observer({
           sync: false,
           dependentKeys: ['fullName'],
-          fn() {
+          fn(...args) {
+            assert.deepEqual(args, [this, 'fullName'], 'arguments are correct');
             assert.step(`fired for: ${this.fullName}`);
           },
         });
