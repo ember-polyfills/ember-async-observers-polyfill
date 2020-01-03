@@ -17,6 +17,10 @@ module.exports = {
   included() {
     this._super.included.apply(this, arguments);
 
+    if (!this.shouldPolyfill) {
+      return;
+    }
+
     // grab the original _findHost, before ember-engines can muck with it
     let proto = Object.getPrototypeOf(this);
     let host = proto._findHost.call(this);
