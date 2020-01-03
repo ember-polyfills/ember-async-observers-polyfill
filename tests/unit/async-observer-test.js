@@ -26,7 +26,7 @@ module('ember-async-observer-polyfill', function() {
     test('runs sync with legacy API', function(assert) {
       buildObserver = () =>
         observer('fullName', function() {
-          assert.step(`fired for: ${this.fullName}`);
+          assert.step(`fired for: ${this.get('fullName')}`);
         });
 
       let person = buildPerson({ firstName: 'max', lastName: 'jackson' });
@@ -36,7 +36,7 @@ module('ember-async-observer-polyfill', function() {
       person.set('firstName', 'james');
       assert.verifySteps(['fired for: james jackson'], 'observer after upstream property updated');
 
-      assert.strictEqual(person.fullName, 'james jackson');
+      assert.strictEqual(person.get('fullName'), 'james jackson');
     });
 
     test('errors without sync specified in emberjs/rfcs#494 API', function(assert) {
@@ -56,7 +56,7 @@ module('ember-async-observer-polyfill', function() {
           sync: true,
           dependentKeys: ['fullName'],
           fn() {
-            QUnit.config.current.assert.step(`fired for: ${this.fullName}`);
+            assert.step(`fired for: ${this.get('fullName')}`);
           },
         });
 
@@ -67,7 +67,7 @@ module('ember-async-observer-polyfill', function() {
       person.set('firstName', 'james');
       assert.verifySteps(['fired for: james jackson'], 'observer after upstream property updated');
 
-      assert.strictEqual(person.fullName, 'james jackson');
+      assert.strictEqual(person.get('fullName'), 'james jackson');
     });
 
     test('runs async with emberjs/rfcs#494 API', async function(assert) {
@@ -77,7 +77,7 @@ module('ember-async-observer-polyfill', function() {
           dependentKeys: ['fullName'],
           fn(...args) {
             assert.deepEqual(args, [this, 'fullName'], 'arguments are correct');
-            assert.step(`fired for: ${this.fullName}`);
+            assert.step(`fired for: ${this.get('fullName')}`);
           },
         });
 
@@ -92,7 +92,7 @@ module('ember-async-observer-polyfill', function() {
 
       assert.verifySteps(['fired for: james jackson'], 'observer after upstream property updated');
 
-      assert.strictEqual(person.fullName, 'james jackson');
+      assert.strictEqual(person.get('fullName'), 'james jackson');
     });
   });
 });
