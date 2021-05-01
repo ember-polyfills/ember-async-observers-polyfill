@@ -62,7 +62,7 @@
     "loader.js": "^4.7.0",
     "prettier": "^1.19.1",
     "qunit-dom": "^1.6.0",
-    "release-it": "^13.6.6",
+    "release-it": "^14.6.1",
     "release-it-lerna-changelog": "^2.4.0"
   },
   "engines": {
